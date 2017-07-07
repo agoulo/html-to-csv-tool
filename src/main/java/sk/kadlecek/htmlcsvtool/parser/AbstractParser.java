@@ -66,6 +66,15 @@ public abstract class AbstractParser implements GenericParser {
         return null;
     }
 
+    protected String getStringValueOfFirstElementWithSelector(Element elem, String selector) {
+        Elements elements = elem.select(selector);
+        if (elements.size() > 0) {
+            Element element = elements.get(0);
+            return element.text();
+        }
+        return null;
+    }
+
     protected List<Element> getElementsMatchingSelector(Document doc, String selector) {
         List<Element> elementsList = new ArrayList<>();
         elementsList.addAll(doc.select(selector));
@@ -74,6 +83,10 @@ public abstract class AbstractParser implements GenericParser {
 
     protected Element getFirstElementMatchingSelector(Document doc, String selector) {
         return doc.select(selector).first();
+    }
+
+    protected Element getFirstElementMatchingSelector(Element elem, String selector) {
+        return elem.select(selector).first();
     }
 
 
@@ -92,4 +105,15 @@ public abstract class AbstractParser implements GenericParser {
         return new ParsedProduct(resourceURI);
     }
 
+    protected String correctYesNoAnswer(String paramName, String value) {
+        final String negationPrefix = "NOT-";
+        if (value != null) {
+            if (value.toLowerCase().equals("ano")) {
+                value = paramName.replaceAll(" ", "");
+            } else if (value.toLowerCase().equals("ne")) {
+                value = negationPrefix + paramName.replaceAll(" ", "");
+            }
+        }
+        return value;
+    }
 }

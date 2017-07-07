@@ -14,13 +14,18 @@ public class ParsedResourcesTable {
     private int lastColumnIndex = -1;
 
     private final String RESOURCE_URI_COLUMN_NAME = "Resource URI";
+    private final String TITLE_COLUMN_NAME = "root.title";
     private int resourceUriColumnIndex = -1;
 
+    private final boolean appendUri = true;
 
     public ParsedResourcesTable(List<ParsedResource> parsedResources) {
         super();
         // add column for resource URIs
-        resourceUriColumnIndex = addColumnIfNecessary(RESOURCE_URI_COLUMN_NAME);
+        if (appendUri) {
+            resourceUriColumnIndex = addColumnIfNecessary(RESOURCE_URI_COLUMN_NAME);
+        }
+        addColumnIfNecessary(TITLE_COLUMN_NAME);
         addParsedResources(parsedResources);
     }
 
@@ -35,7 +40,9 @@ public class ParsedResourcesTable {
 
             // add new row
             int rowIndex = addNewRow();
-            setCellValue(rowIndex, resourceUriColumnIndex, parsedResource.getResourceURI());
+            if (appendUri) {
+                setCellValue(rowIndex, resourceUriColumnIndex, parsedResource.getResourceURI());
+            }
             for (Map.Entry<String, Map<String, String>> propertyCategories : parsedResource.getPropertyCategories().entrySet()) {
 
                 String categoryName = propertyCategories.getKey();

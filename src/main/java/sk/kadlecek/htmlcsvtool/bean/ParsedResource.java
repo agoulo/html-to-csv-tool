@@ -65,6 +65,9 @@ public class ParsedResource {
     }
 
     private String normalizePropertyValue(String value) {
-        return value.toLowerCase();
+        if (value != null) {
+            return value.toLowerCase();
+        }
+        return value;
     }
 }

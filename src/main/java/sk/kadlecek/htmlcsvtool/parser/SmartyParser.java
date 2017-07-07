@@ -82,7 +82,8 @@ public class SmartyParser extends AbstractParser {
 
                     if (paramNameElement != null && paramValueElement != null) {
                         String paramName = paramNameElement.text();
-                        String paramValue = paramValueElement.text();
+                        String paramValue = correctYesNoAnswer(paramName, paramValueElement.text());
+
                         paramsMap.put(paramName, paramValue);
                     }
                 }
@@ -90,5 +91,4 @@ public class SmartyParser extends AbstractParser {
         }
         return mapParamCategories;
     }
-
 }

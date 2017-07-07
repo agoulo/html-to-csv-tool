@@ -43,9 +43,13 @@ public class FetcherCallable implements Callable<ParsedHtmlDocumentsBatch> {
         ParsedHtmlDocumentsBatch result = new ParsedHtmlDocumentsBatch();
         for (File f : filesToProcess) {
             logger.debug(getLogMessage("Processing file '{}'."), f.getAbsoluteFile());
-            ParsedHtmlDocument parsedHtmlDocument = parser.parse(f, jobConfiguration);
-            // merge parsed file into result
-            result.addParsedHtmlDocumentToBatch(parsedHtmlDocument);
+//            try {
+                ParsedHtmlDocument parsedHtmlDocument = parser.parse(f, jobConfiguration);
+                // merge parsed file into result
+                result.addParsedHtmlDocumentToBatch(parsedHtmlDocument);
+//            }catch (Exception e) {
+             //noop
+//            }
         }
         return result;
     }

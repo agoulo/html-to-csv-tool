@@ -8,7 +8,8 @@ public enum WebsiteType {
     MIRONET (MironetParser.class),
     DATART (DatartParser.class),
     CESKYMOBIL (CeskyMobilParser.class),
-    SMARTY (SmartyParser.class);
+    SMARTY (SmartyParser.class),
+    GEARBEST (GearBestParser.class);
 
     private Class<? extends GenericParser> parserClass;
 

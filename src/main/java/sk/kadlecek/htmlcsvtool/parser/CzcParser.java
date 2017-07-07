@@ -82,8 +82,8 @@ public class CzcParser extends AbstractParser {
                         Element paramValueElement = paramRow.getElementsByTag("strong").first();
 
                         if (paramNameElement != null && paramValueElement != null) {
-                            String paramName = paramNameElement.text();
-                            String paramValue = paramValueElement.text();
+                            String paramName = removeColonCharFromParamName(paramNameElement.text());
+                            String paramValue = correctYesNoAnswer(paramName, paramValueElement.text());
                             paramsMap.put(paramName, paramValue);
                         }
                     }
@@ -93,4 +93,10 @@ public class CzcParser extends AbstractParser {
         return mapParamCategories;
     }
 
+    private String removeColonCharFromParamName(String paramName) {
+        if (paramName.endsWith(":")) {
+            paramName = paramName.substring(0, paramName.length() -1);
+        }
+        return paramName;
+    }
 }
