@@ -116,4 +116,11 @@ public abstract class AbstractParser implements GenericParser {
         }
         return value;
     }
+
+    protected String removeColonCharFromParamName(String paramName) {
+        if (paramName.endsWith(":")) {
+            paramName = paramName.substring(0, paramName.length() -1);
+        }
+        return paramName;
+    }
 }

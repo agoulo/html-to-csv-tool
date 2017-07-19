@@ -93,10 +93,4 @@ public class CzcParser extends AbstractParser {
         return mapParamCategories;
     }
 
-    private String removeColonCharFromParamName(String paramName) {
-        if (paramName.endsWith(":")) {
-            paramName = paramName.substring(0, paramName.length() -1);
-        }
-        return paramName;
-    }
 }

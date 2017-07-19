@@ -9,7 +9,8 @@ public enum WebsiteType {
     DATART (DatartParser.class),
     CESKYMOBIL (CeskyMobilParser.class),
     SMARTY (SmartyParser.class),
-    GEARBEST (GearBestParser.class);
+    GEARBEST (GearBestParser.class),
+    MOBILESHOP (MobileShopParser.class);
 
     private Class<? extends GenericParser> parserClass;
 
