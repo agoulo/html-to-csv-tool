@@ -10,7 +10,9 @@ public enum WebsiteType {
     CESKYMOBIL (CeskyMobilParser.class),
     SMARTY (SmartyParser.class),
     GEARBEST (GearBestParser.class),
-    MOBILESHOP (MobileShopParser.class);
+    MOBILESHOP (MobileShopParser.class),
+    KOGAN (KoganParser.class),
+    DEBENHAMSPLUS (DebenhamsPlusParser.class);
 
     private Class<? extends GenericParser> parserClass;
 
